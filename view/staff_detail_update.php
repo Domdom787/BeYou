@@ -1,6 +1,6 @@
 <?php
 
-  include("../inc/dbconn.inc.php");
+  include("../models/inc/dbconn.inc.php");
 
 
 
