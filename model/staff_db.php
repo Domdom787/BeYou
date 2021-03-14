@@ -7,14 +7,111 @@
     if($_FILES['file']['name']) {      
       $filename = explode(".", $_FILES['file']['name']);
       // check if it is a csv file
-      if($filename[1] == 'csv') {        
+      if($filename[1] == 'csv') {  
 
-        uploadstaffdetails($filename);
+        $handle = fopen($_FILES['file']['tmp_name'], "r");
+        $data = array();
+
+        while (!feof($handle)) {
+          $data[] = fgetcsv($handle, null, '|','"');
+        }
+
+        fclose($handle);
+
+        uploadstaffdetails($data);
         
       } // end if file format check
     } // end if  a file was submitted
   } // end if submit button was pressed
 
+
+
+  // Function for when a admin user uploads a staff file
+  function uploadstaffdetails($data){
+    include("inc/dbconn.inc.php");
+
+    $numrecords = count($data);
+
+    for($i = 1; $i < $numrecords; $i++) {
+
+        $record = array(
+          "Username"      => mysqli_real_escape_string($conn, $data[$i][1]),
+          "Entity"        => mysqli_real_escape_string($conn, $data[$i][0]),
+          "Knownas"       => mysqli_real_escape_string($conn, $data[$i][2]),
+          "Surname"       => mysqli_real_escape_string($conn, $data[$i][3]),
+          "StartDate"     => mysqli_real_escape_string($conn, $data[$i][4]),
+          // Sequence umber is the 5 element in array. No need for this value
+          "EndDate"       => mysqli_real_escape_string($conn, $data[$i][6]),
+          "EmpStatus"     => mysqli_real_escape_string($conn, $data[$i][7]),
+          "EmpClass"      => mysqli_real_escape_string($conn, $data[$i][8]),
+          "LineManager"   => mysqli_real_escape_string($conn, $data[$i][9]),
+          "JobCode"       => mysqli_real_escape_string($conn, $data[$i][10]),
+          "JobTitle"      => mysqli_real_escape_string($conn, $data[$i][11]),
+          "JobEntryDate"  => mysqli_real_escape_string($conn, $data[$i][12]),
+          "JobLevel"      => mysqli_real_escape_string($conn, $data[$i][13]),
+          "CostCenterCode"=> mysqli_real_escape_string($conn, $data[$i][14]),
+          "CostCenterName"=> mysqli_real_escape_string($conn, $data[$i][15]),
+          "BusUnitCode"   => mysqli_real_escape_string($conn, $data[$i][16]),
+          "BusUnitName"   => mysqli_real_escape_string($conn, $data[$i][17]),
+          "DivisionCode"  => mysqli_real_escape_string($conn, $data[$i][18]),
+          "DivisionName"  => mysqli_real_escape_string($conn, $data[$i][19]),
+          "DepartmentCode"=> mysqli_real_escape_string($conn, $data[$i][20]),
+          "DepartmentName"=> mysqli_real_escape_string($conn, $data[$i][21]),
+          "DiscTeamCode"  => mysqli_real_escape_string($conn, $data[$i][22]),
+          "DiscTeamName"  => mysqli_real_escape_string($conn, $data[$i][23]),
+          "IASCategory"   => mysqli_real_escape_string($conn, $data[$i][24])
+        );
+        
+        
+        // Check the csv has values. Only if it does then create the new lk value
+        if(strlen($record['CostCenterCode']) != 0) {
+          add_costcenter($record['CostCenterCode'], $record['CostCenterName']);          
+        };
+
+        if(strlen($record['BusUnitCode']) != 0) {
+          add_businessunit($record['BusUnitCode'], $record['BusUnitName']);
+        };
+
+        if(strlen($record['DivisionCode']) != 0) {
+          add_division($record['DivisionCode'],$record['DivisionName']);
+        };
+
+        if(strlen($record['DepartmentCode']) != 0) {
+          add_department($record['DepartmentCode'],$record['DepartmentName']);
+        };
+
+        if(strlen($record['DiscTeamCode']) != 0) {
+          add_discteam($record['DiscTeamCode'],$record['DiscTeamName']);
+        };
+
+        if(strlen($record['JobCode']) != 0) {
+          add_jobtitle($record['JobCode'],$record['JobTitle']);
+        };    
+
+        if(strlen($record['JobLevel']) != 0) {
+          add_joblevel($record['JobLevel']);
+        };   
+        
+        if(strlen($record['IASCategory']) != 0) {
+          add_iascat($record['IASCategory']);
+        };  
+
+        update_staff_attributes($record);                        
+        
+        //Add bu user
+        add_buuser($record);
+
+        if(fmod($i,2) == 0) {
+          echo "Completed " . $i . " records from " . $numrecords . ". <br>";
+        }
+
+      set_time_limit(10);     
+
+    } // end loop through data array    
+  } // End uploadstaffdetails function
+
+
+// ------------------------------------------------------- 
 
   // Cost Center function: Check if it exists and if NOT then ADD
   function add_costcenter ($id, $name) {
@@ -26,16 +123,14 @@
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-      $outcome = "exists";
-      return $outcome; 
-
+      $outcome = "cost center exists";      
+      return $outcome;
     } else {
       
       $sql = "INSERT INTO lk_costcenter (CostCenterCode, CostCenterName) VALUES ('" . $id . "', '" . $name . "');";
       mysqli_query($conn, $sql);
       mysqli_close($conn);
-      $outcome = "added";
-      return $outcome;  
+
     }
   } // End function
   
@@ -280,8 +375,7 @@
   }
 
   // If any attribute has changed then will add a new record for the user and updte the existing records eff_todate
-  function add_staffattribute($user_id, $record) {
-
+  function add_staffattribute($user_id, $record) {    
     include("inc/dbconn.inc.php"); 
 
     $date = date("Y-m-d");
@@ -293,6 +387,14 @@
     //Second insert a new record in DB with the new attributes
     $incCatID   = getIncCatID($record['IASCategory']);
     $jobLevelID = getJobLevelID($record['JobLevel']);      
+
+    if(strlen($incCatID) == 0) {
+      $incCatID = 0;
+    }
+
+    if(strlen($jobLevelID) == 0) {
+      $incCatID = 0;
+    }
 
     $sql = "INSERT INTO bu_staffattributes 
                     (Entity,
@@ -321,9 +423,6 @@
 
     mysqli_query($conn, $sql);
     mysqli_close($conn);
-    $outcome = "New Record";    
-    return $outcome;
-
   }
 
   // Function to add or update a users attributes
@@ -355,7 +454,7 @@
       $NeedUpdate += (getIncCatID($record['IASCategory']) == $row['IncCategoryId']) ? 0 : 1;
       
       if ($NeedUpdate > 0) {
-        //Run the update funciton. Update existing record Eff_ToDate and Insert new record
+        //Run the update function. Update existing record Eff_ToDate and Insert new record
         add_staffattribute($user_id, $record);       
 
       } 
@@ -364,6 +463,14 @@
       //Add in the new staff member
       $incCatID   = getIncCatID($record['IASCategory']);
       $jobLevelID = getJobLevelID($record['JobLevel']);      
+
+      if(strlen($incCatID) == 0) {
+        $incCatID = 0;
+      }
+
+      if(strlen($jobLevelID) == 0) {
+        $incCatID = 0;
+      }
 
       $sql = "INSERT INTO bu_staffattributes 
                      (Entity,
@@ -390,107 +497,10 @@
                       '" . $record['DiscTeamCode']  . "',
                        " . $incCatID . ");";
 
-      mysqli_query($conn, $sql);
-      $outcome = "added";
-      mysqli_close($conn);
-      echo "Added NEW user with entity: " . $record['Entity'] . "<br>";
-      return $outcome;
+      mysqli_query($conn, $sql);      
+      mysqli_close($conn);     
     }
 
   }
 
-
-  // Function for when a admin user uploads a staff file
-  function uploadstaffdetails($filename){
-    include("inc/dbconn.inc.php");
-
-    $handle = fopen($_FILES['file']['tmp_name'], "r");
-
-    $row = 0;
-
-    //while($data = fgetcsv($handle,10000,"|")) {
-    while (($raw_string = fgets($handle)) !== false) {
-
-      $data = str_getcsv($raw_string,"|");
-
-      //skip header row
-      $row++;
-      if( $row == 1 ) {            
-        continue;
-      } else {
-
-        $record = array(
-          "Entity"        => mysqli_real_escape_string($conn, $data[0]),
-          "Username"      => mysqli_real_escape_string($conn, $data[1]),
-          "Knownas"       => mysqli_real_escape_string($conn, $data[2]),
-          "Surname"       => mysqli_real_escape_string($conn, $data[3]),
-          "StartDate"     => mysqli_real_escape_string($conn, $data[4]),
-          // Squency is the 5 element in arrayc. No need for this value
-          "EndDate"       => mysqli_real_escape_string($conn, $data[6]),
-          "EmpStatus"     => mysqli_real_escape_string($conn, $data[7]),
-          "EmpClass"      => mysqli_real_escape_string($conn, $data[8]),
-          "LineManager"   => mysqli_real_escape_string($conn, $data[9]),
-          "JobCode"       => mysqli_real_escape_string($conn, $data[10]),
-          "JobTitle"      => mysqli_real_escape_string($conn, $data[11]),
-          "JobEntryDate"  => mysqli_real_escape_string($conn, $data[12]),
-          "JobLevel"      => mysqli_real_escape_string($conn, $data[13]),
-          "CostCenterCode"=> mysqli_real_escape_string($conn, $data[14]),
-          "CostCenterName"=> mysqli_real_escape_string($conn, $data[15]),
-          "BusUnitCode"   => mysqli_real_escape_string($conn, $data[16]),
-          "BusUnitName"   => mysqli_real_escape_string($conn, $data[17]),
-          "DivisionCode"  => mysqli_real_escape_string($conn, $data[18]),
-          "DivisionName"  => mysqli_real_escape_string($conn, $data[19]),
-          "DepartmentCode"=> mysqli_real_escape_string($conn, $data[20]),
-          "DepartmentName"=> mysqli_real_escape_string($conn, $data[21]),
-          "DiscTeamCode"  => mysqli_real_escape_string($conn, $data[22]),
-          "DiscTeamName"  => mysqli_real_escape_string($conn, $data[23]),
-          "IASCategory"   => mysqli_real_escape_string($conn, $data[24])
-        );
-        
-        // Check the csv has values. Only if it does then create the new lk value
-        if(strlen($record['CostCenterCode']) != 0) {
-          add_costcenter($record['CostCenterCode'], $record['CostCenterName']);
-        };
-
-        if(strlen($record['BusUnitCode']) != 0) {
-          add_businessunit($record['BusUnitCode'], $record['BusUnitName']);
-        };
-
-        if(strlen($record['DivisionCode']) != 0) {
-          add_division($record['DivisionCode'],$record['DivisionName']);
-        };
-
-        if(strlen($record['DepartmentCode']) != 0) {
-          add_department($record['DepartmentCode'],$record['DepartmentName']);
-        };
-
-        if(strlen($record['DiscTeamCode']) != 0) {
-          add_discteam($record['DiscTeamCode'],$record['DiscTeamName']);
-        };
-
-        if(strlen($record['JobCode']) != 0) {
-          add_jobtitle($record['JobCode'],$record['JobTitle']);
-        };    
-
-        if(strlen($record['JobLevel']) != 0) {
-          add_joblevel($record['JobLevel']);
-        };   
-        
-        if(strlen($record['IASCategory']) != 0) {
-          add_iascat($record['IASCategory']);
-        };  
-
-        //Add bu user
-        add_buuser($record);
-
-        update_staff_attributes($record);        
-
-      }     
-
-      set_time_limit(10);     
-
-    } // end while loop
-
-    fclose($handle);
-  } // End uploadstaffdetails function
 ?>
