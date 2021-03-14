@@ -99,15 +99,15 @@
         update_staff_attributes($record);                        
         
         //Add bu user
-        add_buuser($record);
-
-        if(fmod($i,2) == 0) {
-          echo "Completed " . $i . " records from " . $numrecords . ". <br>";
-        }
+        add_buuser($record);        
 
       set_time_limit(10);     
 
-    } // end loop through data array    
+    } // end loop through data array  
+    
+    header("Location: ../index.php");
+    exit();
+
   } // End uploadstaffdetails function
 
 
