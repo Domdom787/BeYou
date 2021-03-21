@@ -1,7 +1,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link elevation-4">
+    <a href="home" class="brand-link elevation-4">
       <img src="public/img/beyou_2.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -17,7 +17,7 @@
           <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="profile" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
 
           <!-- Report menu drop down -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="reports" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Reports
@@ -67,45 +67,45 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="beyouengagement_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>BeYou Engagement</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                <a href="perception_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Perception</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="../layout/boxed.html" class="nav-link">
+                <a href="twt_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>TWT</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/fixed-sidebar.html" class="nav-link">
+                <a href="quality_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Quality</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/fixed-topnav.html" class="nav-link">
+                <a href="ssm_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SSM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/fixed-footer.html" class="nav-link">
+                <a href="production_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Production</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/collapsed-sidebar.html" class="nav-link">
+                <a href="projects_report" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Projects</p>
                 </a>
@@ -125,19 +125,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../UI/general.html" class="nav-link">
+                <a href="project?id=1" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project 1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/icons.html" class="nav-link">
+                <a href="project?id=2" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project 2</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
+                <a href="project?id=3" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project 3</p>
                 </a>
@@ -158,43 +158,43 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
+                <a href="beyou_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>BeYou</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
+                <a href="incentive_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Incentives</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/flot.html" class="nav-link">
+                <a href="research_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Research</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
+                <a href="lsa_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>LSA</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
+                <a href="ssm_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SSM</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../charts/inline.html" class="nav-link">
+                <a href="twt_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>TWT</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
-                <a href="../charts/inline.html" class="nav-link">
+                <a href="user_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>
                   <i class="fas fa-angle-right right"></i>
@@ -202,7 +202,7 @@
                 <!--- User function additional menu item -->
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="?a=uploadstaff" class="nav-link">
+                    <a href="uploadstaff" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Upload staff file</p>
                     </a>

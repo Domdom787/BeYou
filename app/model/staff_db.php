@@ -1,6 +1,6 @@
 <?php
 
-  
+  /*
   // First check if we updating via a 1) uploaded file 2) a user update or 3) a scheduled task
   if(isset($_POST["submit"])) {
     //check if file included
@@ -23,7 +23,7 @@
       } // end if file format check
     } // end if  a file was submitted
   } // end if submit button was pressed
-
+*/
 
 
   // Function for when a admin user uploads a staff file
@@ -105,7 +105,8 @@
 
     } // end loop through data array  
     
-    header("Location: ../index.php");
+    //header("Location: ../index.php");
+    return $numrecords;
     exit();
 
   } // End uploadstaffdetails function
