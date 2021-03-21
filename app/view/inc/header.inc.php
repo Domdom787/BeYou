@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>BeYou | Arete build</title>
 
-  <!-- Favicon -->
+  <!-- Favicon -->  
   <link rel="icon" href="img/beyou_2.png" type="image/png" sizes="16x16">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +26,9 @@
 <div class="wrapper">
 
 <?php
-  include("view/inc/navbar.inc.php");  
-  include("view/inc/sidebar.inc.php");
+  include("../app/view/inc/navbar.inc.php");  
+  include("../app/view/inc/sidebar.inc.php");
 ?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">

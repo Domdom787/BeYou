@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link elevation-4">
-      <img src="img/beyou_2.png"
+      <img src="public/img/beyou_2.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
@@ -56,7 +56,7 @@
 
           <!-- Report menu drop down -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Reports
@@ -114,7 +114,40 @@
           </li>
           <!-- END of Report menu drop down -->
 
+          <!-- Projects menu option -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Projects
+                <i class="fas fa-angle-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../UI/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project 1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project 2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../UI/buttons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project 3</p>
+                </a>
+              </li>              
+            </ul>
+          </li>
+          <!-- END projects menu -->
+
           <!--- Admin menu items -->
+          <li class="nav-header">ADMIN MENU</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
@@ -160,48 +193,43 @@
                   <p>TWT</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item has-treeview">
                 <a href="../charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>
+                  <i class="fas fa-angle-right right"></i>
                 </a>
+                <!--- User function additional menu item -->
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="?a=uploadstaff" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Upload staff file</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Edit single user</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Edit team structure</p>
+                    </a>
+                  </li>
+                </ul>
+
+
+
               </li>
 
             </ul>
           </li>
           <!-- END of Admin menu options -->
 
-          <!-- Projects menu option -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Projects
-                <i class="fas fa-angle-right right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project 1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project 2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project 3</p>
-                </a>
-              </li>              
-            </ul>
-          </li>
-          <!-- END projects menu -->
+          
 
         </ul>
       </nav>
