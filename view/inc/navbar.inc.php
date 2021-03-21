@@ -7,10 +7,35 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+          
+        <a href="https://sharepoint.discovery.co.za/health/" target="_blank" class="nav-link">
+          <img src="img/sharepoint-logo.jpg"
+            alt="SAPJAM Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: .99; width: 25px; height: 25px; margin-bottom: 5px;">
+           
+           SharePoint
+          </a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="http://dna.discovery.co.za" target="_blank" class="nav-link">
+          <img src="img/dna-logo.jpg"
+              alt="SAPJAM Logo"
+              class="brand-image img-circle elevation-3"
+              style="opacity: .99; width: 25px; height: 25px; margin-bottom: 5px;">
+
+          DNA
+        </a>
+      </li>
+
+        <a href="https://jam2.sapjam.com/home" target="_blank" class="nav-link">
+          <img src="img/SAPJam-512x512bb.jpg"
+            alt="SAPJAM Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: .99; width: 25px; height: 25px; margin-bottom: 5px;">
+
+          SAPJAM
+        </a>
       </li>
     </ul>
 
