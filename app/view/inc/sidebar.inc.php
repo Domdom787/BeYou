@@ -117,7 +117,7 @@
           <!-- Projects menu option -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Projects
                 <i class="fas fa-angle-right right"></i>
@@ -126,19 +126,19 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="project?id=1" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-tasks nav-icon"></i>
                   <p>Project 1</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="project?id=2" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-tasks nav-icon"></i>
                   <p>Project 2</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="project?id=3" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-tasks nav-icon"></i>
                   <p>Project 3</p>
                 </a>
               </li>              
@@ -159,13 +159,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="beyou_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-chess nav-icon"></i>
                   <p>BeYou</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="incentive_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-balance-scale-left nav-icon"></i>
                   <p>Incentives</p>
                 </a>
               </li>
@@ -174,7 +174,7 @@
               <!-- ********************** START Research menu options **************** -->
               <li class="nav-item has-treeview">
                 <a href="research_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-bullhorn nav-icon"></i>
                   <p>Research</p>
                   <i class="fas fa-angle-right right"></i>
                 </a>
@@ -182,35 +182,35 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="survey_periods" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-calendar-alt nav-icon"></i>
                       <p>Survey periods</p>
                     </a>
                   </li>
                 
                   <li class="nav-item">
                     <a href="upload_mbrfcr_data" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-mail-bulk nav-icon"></i>
                       <p>Upload MBR and FCR data</p>
                     </a>
                   </li>
                 
                   <li class="nav-item">
                     <a href="upload_sps_data" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-handshake nav-icon"></i>
                       <p>Upload SPS data</p>
                     </a>
                   </li>
                 
                   <li class="nav-item">
                     <a href="upload_survey_data" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-headset nav-icon"></i>
                       <p>Upload Survey data</p>
                     </a>
                   </li>
                 
                   <li class="nav-item">
                     <a href="manage_appeals" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-exclamation nav-icon"></i>
                       <p>Manage appeals</p>
                     </a>
                   </li>
@@ -220,25 +220,25 @@
 
               <li class="nav-item">
                 <a href="lsa_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-route nav-icon"></i>
                   <p>LSA</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="ssm_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-chart-bar nav-icon"></i>
                   <p>SSM</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="twt_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-inbox nav-icon"></i>
                   <p>TWT</p>
                 </a>
               </li>
               <li class="nav-item has-treeview">
                 <a href="user_admin" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-users nav-icon"></i>
                   <p>Users</p>
                   <i class="fas fa-angle-right right"></i>
                 </a>
@@ -247,19 +247,19 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="uploadstaff" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-user-plus nav-icon"></i>
                       <p>Upload staff file</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-user-tag nav-icon"></i>
                       <p>Edit single user</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="fas fa-user-friends nav-icon"></i>
                       <p>Edit team structure</p>
                     </a>
                   </li>

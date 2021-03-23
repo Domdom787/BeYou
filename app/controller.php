@@ -38,6 +38,10 @@
     case 'research_admin':
       include("view/admin/research/va_research.php");
       break;
+
+    case 'survey_periods':
+      include("view/admin/research/va_surveyperiods.php");
+      break;
     
     case 'upload_mbrfcr_data':
       include("view/admin/research/va_uploadmbrfcr.php"); 

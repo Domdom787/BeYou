@@ -58,8 +58,8 @@
     <div class="row">
       <div class="col-md-6">
         <!-- general form elements -->
-        <div class="card card-primary">
-          <div class="card-header">
+        <div class="card">
+          <div class="card-header bg_dark">
             <h3 class="card-title">Upload MBR or FCR data</h3>
           </div>
 
