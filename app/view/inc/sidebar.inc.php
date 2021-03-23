@@ -169,12 +169,55 @@
                   <p>Incentives</p>
                 </a>
               </li>
-              <li class="nav-item">
+
+
+              <!-- ********************** START Research menu options **************** -->
+              <li class="nav-item has-treeview">
                 <a href="research_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Research</p>
+                  <i class="fas fa-angle-right right"></i>
                 </a>
+                <!--- Research menu items -->
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="survey_periods" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Survey periods</p>
+                    </a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a href="upload_mbrfcr_data" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Upload MBR and FCR data</p>
+                    </a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a href="upload_sps_data" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Upload SPS data</p>
+                    </a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a href="upload_survey_data" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Upload Survey data</p>
+                    </a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a href="manage_appeals" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Manage appeals</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
+              <!-- ********************** END Research menu options **************** -->
+
               <li class="nav-item">
                 <a href="lsa_admin" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -199,7 +242,8 @@
                   <p>Users</p>
                   <i class="fas fa-angle-right right"></i>
                 </a>
-                <!--- User function additional menu item -->
+
+                <!-- ********************** START User menu options **************** -->
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="uploadstaff" class="nav-link">
@@ -220,6 +264,7 @@
                     </a>
                   </li>
                 </ul>
+                <!-- ********************** END User menu options **************** -->
 
 
 

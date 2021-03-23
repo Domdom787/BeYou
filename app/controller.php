@@ -13,19 +13,19 @@
 
     // General related views ---------------------------------------------------------------------------------------------------
     case 'profile':
-      include('view/profile.php');
+      include('view/beyou/profile.php');
       break;
 
     case 'home':
-      include('view/home.php');
+      include('view/beyou/home.php');
       break;
     
     case 'dashboard':
-      include('view/dashboard.php');
+      include('view/beyou/dashboard.php');
       break;
 
     case 'challenge':
-      include('view/challenge.php');
+      include('view/beyou/challenge.php');
       break;
 
     // Report related views --------------------------------------------------------------------------------------------------
@@ -34,9 +34,23 @@
 
     // Admin related views ---------------------------------------------------------------------------------------------------
 
+    // research menu options
+    case 'research_admin':
+      include("view/admin/research/va_research.php");
+      break;
+    
+    case 'upload_mbrfcr_data':
+      include("view/admin/research/va_uploadmbrfcr.php"); 
+      break;
+
+
+      
+    // user menu options  
     case 'uploadstaff':
       include("view/admin/va_upload_staff_file.php");        
       break;
+
+      
 
   }
 
