@@ -157,12 +157,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item has-treeview">
                 <a href="beyou_admin" class="nav-link">
                   <i class="fas fa-chess nav-icon"></i>
                   <p>BeYou</p>
+                  <i class="fas fa-angle-right right"></i>
                 </a>
+
+                <!--- BeYou menu items -->
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="sched_tasks" class="nav-link">
+                      <i class="fas fa-calendar-alt nav-icon"></i>
+                      <p>Scheduled Tasks</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
+
+
+
               <li class="nav-item">
                 <a href="incentive_admin" class="nav-link">
                   <i class="fas fa-balance-scale-left nav-icon"></i>
@@ -252,13 +266,13 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="edit_single_user" class="nav-link">
                       <i class="fas fa-user-tag nav-icon"></i>
                       <p>Edit single user</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="edit_team_structure" class="nav-link">
                       <i class="fas fa-user-friends nav-icon"></i>
                       <p>Edit team structure</p>
                     </a>

@@ -26,8 +26,10 @@
 <div class="wrapper">
 
 <?php
+  include("../app/model/inc/global_vars.inc.php");
   include("../app/view/inc/navbar.inc.php");  
   include("../app/view/inc/sidebar.inc.php");
+  include("../app/model/inc/functions.inc.php");  
 ?>
 
 <!-- Content Wrapper. Contains page content -->

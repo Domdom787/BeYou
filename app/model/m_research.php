@@ -8,11 +8,6 @@
 // functions required
 // Survey periods
 
-  // $uploadpath = '\\dhpnfsdata01\cognos\BIUADMIN\Client_Research\BeYou_Report\BeYou Data Extracts for EMBR and FCR';
-  // $fcr_file_name = 'RPTR204410 - BeYou Data extract for FCR'; // e.g. 'RPTR204410 - BeYou Data extract for FCR( 2020-01-01).xlsx'
-  // $mbr_file_name = 'RPTR204411 - BeYou Data extract for EMBR'; // e.g. 'RPTR204411 - BeYou Data extract for EMBR( 2020-01-11).xlsx'
-
-
   include('../app/vendor/autoload.php') ;  // Used for xls or xlsx related files  
 
   use \PhpOffice\PhpSpreadsheet\Spreadsheet;

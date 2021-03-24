@@ -21,7 +21,7 @@
       if(isset($_POST["import_mbrfcr_btn"])) {
                 
         include("../app/model/m_research.php");
-        include("../app/model/inc/updatelog.inc.php");
+        include("../app/model/inc/functions.inc.php");
         
         $allowed_ext = array('xls', 'csv', 'xlsx');
         $fileName = $_FILES['input_mbrfcr']['name'];        

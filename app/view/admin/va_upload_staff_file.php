@@ -20,7 +20,7 @@
         // First check if we updating via a 1) uploaded file 2) a user update or 3) a scheduled task
         if(isset($_POST["submit"])) {
           
-          include($_SERVER['DOCUMENT_ROOT'] . "/BeYou/app/model/staff_db.php");
+          include($root . "/app/model/staff_db.php");
           
           //check if file included
           if($_FILES['file']['name']) {      
@@ -47,7 +47,7 @@
         ?>
 
           <!-- Form to import the staff file -->
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="" method="POST" enctype="multipart/form-data">
               <div align="center">
                 <p>Upload Staff File: <input type="file" name="file"></p>
                 <p><input type="submit" name="submit" value="Import"></p>    

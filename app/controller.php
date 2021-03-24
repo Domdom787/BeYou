@@ -34,6 +34,12 @@
 
     // Admin related views ---------------------------------------------------------------------------------------------------
 
+    // BeYou menu options
+    case 'sched_tasks':
+      include("view/admin/va_sched_tasks.php");
+      break;
+
+    
     // research menu options
     case 'research_admin':
       include("view/admin/research/va_research.php");
