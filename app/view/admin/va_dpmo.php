@@ -31,7 +31,7 @@
           pre_r($data);
         }
       ?>
-      
+
       <form method="POST" id="import_dpmo_form">
         <input type="submit" name="import_dpmo_btn" id="import_dpmo_btn" class="btn btn-primary" value="Run DPMO Import" />
       </form>
@@ -39,6 +39,7 @@
     </div>
     <div class="col-md-4">
       <h3>Display table of last 14 days of runs</h3>
+      <p>Todays date: <?php echo date("Y-m-d H:i:s") ?></p>
     </div>  
   </div>
   
