@@ -39,6 +39,19 @@
       include("view/admin/va_sched_tasks.php");
       break;
 
+    // Incentive menu options
+    case 'inc_calc':
+      include("view/admin/incentive/va_upload_bands.php");
+      break;
+
+    case 'import_bands':
+      include("view/admin/incentive/va_upload_bands.php");
+      break;
+
+    case 'masterfile':
+      include("view/admin/incentive/va_inc_masterfile.php");
+      break;
+
     
     // research menu options
     case 'research_admin':
@@ -51,6 +64,11 @@
     
     case 'upload_mbrfcr_data':
       include("view/admin/research/va_uploadmbrfcr.php"); 
+      break;
+    
+    // DPMO menu option
+    case 'dpmo':
+      include("view/admin/va_dpmo.php"); 
       break;
 
 

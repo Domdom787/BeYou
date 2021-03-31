@@ -146,7 +146,7 @@
           </li>
           <!-- END projects menu -->
 
-          <!--- Admin menu items -->
+          <!--- ********************************************** Admin menu items ************************************ -->
           <li class="nav-header">ADMIN MENU</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -176,13 +176,37 @@
               </li>
 
 
-
-              <li class="nav-item">
+              <!--- ********************** START Incentive menu options **************** -->
+              <li class="nav-item has-treeview">
                 <a href="incentive_admin" class="nav-link">
                   <i class="fas fa-balance-scale-left nav-icon"></i>
                   <p>Incentives</p>
+                  <i class="fas fa-angle-right right"></i>
                 </a>
+
+                <ul class="nav nav-treeview">
+
+                  <li class="nav-item">
+                    <a href="masterfile" class="nav-link">
+                      <i class="fa fa-circle nav-icon"></i>
+                      <p>MasterFile</p>
+                    </a>
+                  </li>                 
+
+                  <li class="nav-item">
+                    <a href="import_bands" class="nav-link">
+                      <i class="fa fa-circle nav-icon"></i>
+                      <p>Import Bands</p>
+                    </a>
+                  </li>                 
+
+                </ul>
+
+
+
+
               </li>
+              <!--- ********************** END Incentive menu options **************** -->
 
 
               <!-- ********************** START Research menu options **************** -->
@@ -236,6 +260,12 @@
                 <a href="lsa_admin" class="nav-link">
                   <i class="fas fa-route nav-icon"></i>
                   <p>LSA</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="dpmo" class="nav-link">
+                <i class="fas fa-tasks nav-icon"></i>
+                  <p>DPMO</p>
                 </a>
               </li>
               <li class="nav-item">
