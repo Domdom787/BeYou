@@ -11,6 +11,10 @@
   
   switch ($action) {
 
+    case 'logout':
+      include('model/inc/logout.php');
+      break;
+
     // General related views ---------------------------------------------------------------------------------------------------
     case 'profile':
       include('view/beyou/profile.php');

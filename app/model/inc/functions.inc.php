@@ -65,4 +65,32 @@
       mysqli_close($conn);
   }
 
+  // get log item give data type
+  function getLogrecords($datatype) {
+    include("dbconn.inc.php");
+
+    $date = date("Y-m-d");
+
+    $sql = '
+    SELECT file_name, 
+           num_records, 
+           discription, 
+           date_added, 
+           user_entity 
+    FROM log_imports 
+    WHERE date_added > ' . $date . ' AND 
+          data_type = "' . $datatype . '"
+    ORDER BY date_added DESC';
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);    
+
+    return $result;
+
+  }
+
+  
+
 ?>
+
+

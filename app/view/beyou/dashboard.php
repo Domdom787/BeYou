@@ -25,6 +25,7 @@
       <li>drill down feaure to see more info</li>
     </ul>
     <p>The url will need to have unique view names to define which detail view to display. Then also a Get parameter list to see indiviudal items</p>
+    <?php echo "The current session user is : " . $_SESSION['entity']; ?>
 
   </div>
   <!-- /.container-fluid -->
