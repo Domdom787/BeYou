@@ -8,13 +8,15 @@ $(function () {
       return this.href == url;
   }).addClass('active');
 
+  
   // for sidebar menu and treeview
   $('ul.nav-treeview a').filter(function () {
       return this.href == url;
   }).parentsUntil(".nav-sidebar > .nav-treeview")
       .css({'display': 'block'})
       .addClass('menu-open').prev('a')
-      .addClass('active');
+      .addClass('active');   
+
 });
 
 $('#input_mbrfcr').on('change',function(){
@@ -24,3 +26,17 @@ $('#input_mbrfcr').on('change',function(){
     $(this).next('.custom-file-label').html(fileName);
 })
 
+$(document).ready(function() {
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+
+    $("#example1").DataTable({
+        //scrollX : true,
+        fixedHeader: true,
+        "iDisplayLength": 25
+    });
+});

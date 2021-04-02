@@ -27,10 +27,10 @@
             $filename = explode(".", $_FILES['file']['name']);
             // check if it is a csv file
             if($filename[1] == 'csv') {  
-
-              $handle = fopen($_FILES['file']['tmp_name'], "r");
+              
+              $handle = fopen($_FILES["file"]["tmp_name"], "r");
               $data = array();
-
+              
               while (!feof($handle)) {
                 $data[] = fgetcsv($handle, null, '|','"');
               }

@@ -44,10 +44,6 @@
       break;
 
     // Incentive menu options
-    case 'inc_calc':
-      include("view/admin/incentive/va_upload_bands.php");
-      break;
-
     case 'import_bands':
       include("view/admin/incentive/va_upload_bands.php");
       break;
@@ -58,10 +54,6 @@
 
     
     // research menu options
-    case 'research_admin':
-      include("view/admin/research/va_research.php");
-      break;
-
     case 'survey_periods':
       include("view/admin/research/va_surveyperiods.php");
       break;
@@ -77,11 +69,19 @@
 
 
       
-    // user menu options  
-    case 'uploadstaff':
-      include("view/admin/va_upload_staff_file.php");        
+    // user menu options 
+    case 'edit_single_user':
+      include("view/admin/users/va_edit_single_user.php");        
       break;
 
+    case 'uploadstaff':
+      include("view/admin/users/va_upload_staff_file.php");        
+      break;
+    
+    case 'all_users':
+      include("view/admin/users/va_all_users.php");        
+      break;
+      
       
 
   }

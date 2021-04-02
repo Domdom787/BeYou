@@ -302,9 +302,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="edit_team_structure" class="nav-link">
+                    <a href="all_users" class="nav-link">
                       <i class="fas fa-user-friends nav-icon"></i>
-                      <p>Edit team structure</p>
+                      <p>List all users</p>
                     </a>
                   </li>
                 </ul>

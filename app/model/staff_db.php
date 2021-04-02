@@ -1,31 +1,5 @@
 <?php
 
-  /*
-  // First check if we updating via a 1) uploaded file 2) a user update or 3) a scheduled task
-  if(isset($_POST["submit"])) {
-    //check if file included
-    if($_FILES['file']['name']) {      
-      $filename = explode(".", $_FILES['file']['name']);
-      // check if it is a csv file
-      if($filename[1] == 'csv') {  
-
-        $handle = fopen($_FILES['file']['tmp_name'], "r");
-        $data = array();
-
-        while (!feof($handle)) {
-          $data[] = fgetcsv($handle, null, '|','"');
-        }
-
-        fclose($handle);
-
-        uploadstaffdetails($data);
-        
-      } // end if file format check
-    } // end if  a file was submitted
-  } // end if submit button was pressed
-*/
-
-
   // Function for when a admin user uploads a staff file
   function uploadstaffdetails($data){
     include("inc/dbconn.inc.php");
@@ -60,8 +34,7 @@
           "DiscTeamCode"  => mysqli_real_escape_string($conn, $data[$i][22]),
           "DiscTeamName"  => mysqli_real_escape_string($conn, $data[$i][23]),
           "IASCategory"   => mysqli_real_escape_string($conn, $data[$i][24])
-        );
-        
+        );        
         
         // Check the csv has values. Only if it does then create the new lk value
         if(strlen($record['CostCenterCode']) != 0) {
@@ -361,7 +334,7 @@
 
   }
 
-  // Get the Incentive cat ID given the name
+  // Get the Job Lvel ID given the Job Level name
   function getJobLevelID($JobLevelName) {
     include("inc/dbconn.inc.php"); 
 
@@ -501,6 +474,124 @@
       mysqli_query($conn, $sql);      
       mysqli_close($conn);     
     }
+
+  }
+
+  // Function to get Staff details given the entity 
+  function getUserDetails($entity) {
+    include("inc/dbconn.inc.php");
+
+    $sql = "
+        SELECT u.Entity,
+        u.Username,
+        u.KnownAsName,
+        u.Surname,
+        a.JobCode,
+        jt.JobTitleName,
+        a.JobLevelId,
+        jl.JobLevelName,
+        a.BusinessUnitCode,
+        b.BusinessUnitName,
+        a.CostCenterCode,
+        cc.CostCenterName,
+        a.DepartmentCode,
+        d.DeparmentName,
+        a.DiscoveryTeamCode,
+        t.DiscoveryTeamName,
+        a.RegionId,
+        r.RegionName,
+        a.ServiceTeamId,
+        st.ServiceTeamName,
+        a.SkillId,
+        sk.SkillName,
+        a.IncCategoryId,
+        i.CategoryName
+        
+    FROM bu_user u
+      LEFT JOIN bu_staffattributes a ON u.Entity = a.Entity
+      LEFT JOIN lk_jobtitle jt ON a.JobCode = jt.JobTitleCode
+      LEFT JOIN lk_joblevel jl on a.JobLevelId = jl.JobLevelID
+      LEFT JOIN lk_businessunit b on b.BusinessUnitCode = a.BusinessUnitCode
+      LEFT JOIN lk_costcenter cc on cc.CostCenterCode = a.CostCenterCode
+      LEFT JOIN lk_department d on d.DepartmentID = a.DepartmentCode
+      LEFT JOIN lk_discoveryteam t on t.DiscoveryTeamID = a.DiscoveryTeamCode
+      LEFT JOIN lk_division ds on ds.DivisionCode = a.DivisionCode
+      LEFT JOIN lk_region r on r.RegionID = r.RegionName
+      LEFT JOIN lk_serviceteam st on st.ServiceTeamID = a.ServiceTeamId
+      left JOIN lk_skill sk on sk.SkillID = a.SkillId
+      LEFT JOIN inc_category i on i.CategoryID = a.IncCategoryId
+        
+    WHERE u.entity = " . $entity . " and a.Eff_ToDate = '9999-12-31'
+    ";
+
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    mysqli_close($conn); 
+
+    return $row;
+
+  }
+
+  function getAllUsers() {
+    include("inc/dbconn.inc.php");
+
+    $sql = "
+        SELECT u.Entity,
+        u.Username,
+        u.KnownAsName,
+        u.Surname,
+        a.JobCode,
+        jt.JobTitleName,
+        a.JobLevelId,
+        jl.JobLevelName,
+        a.BusinessUnitCode,
+        b.BusinessUnitName,
+        a.CostCenterCode,
+        cc.CostCenterName,
+        a.DepartmentCode,
+        d.DeparmentName,
+        a.DiscoveryTeamCode,
+        t.DiscoveryTeamName,
+        a.LineManagerEntity,
+        a.RegionId,
+        r.RegionName,
+        a.ServiceTeamId,
+        st.ServiceTeamName,
+        a.SkillId,
+        sk.SkillName,
+        a.IncCategoryId,
+        i.CategoryName
+        
+    FROM bu_user u
+      LEFT JOIN bu_staffattributes a ON u.Entity = a.Entity
+      LEFT JOIN lk_jobtitle jt ON a.JobCode = jt.JobTitleCode
+      LEFT JOIN lk_joblevel jl on a.JobLevelId = jl.JobLevelID
+      LEFT JOIN lk_businessunit b on b.BusinessUnitCode = a.BusinessUnitCode
+      LEFT JOIN lk_costcenter cc on cc.CostCenterCode = a.CostCenterCode
+      LEFT JOIN lk_department d on d.DepartmentID = a.DepartmentCode
+      LEFT JOIN lk_discoveryteam t on t.DiscoveryTeamID = a.DiscoveryTeamCode
+      LEFT JOIN lk_division ds on ds.DivisionCode = a.DivisionCode
+      LEFT JOIN lk_region r on r.RegionID = r.RegionName
+      LEFT JOIN lk_serviceteam st on st.ServiceTeamID = a.ServiceTeamId
+      left JOIN lk_skill sk on sk.SkillID = a.SkillId
+      LEFT JOIN inc_category i on i.CategoryID = a.IncCategoryId
+        
+    WHERE a.Eff_ToDate = '9999-12-31'
+    ORDER by b.BusinessUnitName,
+		        ds.DivisionName,
+            d.DeparmentName,
+            cc.CostCenterName,
+            t.DiscoveryTeamName,
+            a.LineManagerEntity;
+    
+    ";
+
+    $result = mysqli_query($conn, $sql);    
+
+    mysqli_close($conn); 
+
+    return $result;
 
   }
 
