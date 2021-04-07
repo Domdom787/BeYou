@@ -17,7 +17,14 @@
           <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="profile" class="d-block">Alexander Pierce</a>
+          <a href="profile" class="d-block">
+            <?php 
+              include("../app/model/staff_db.php");
+              $name =  getUsersName($_SESSION["entity"]);              
+              
+              echo ucwords($name);
+            ?>
+          </a>
         </div>
       </div>
 

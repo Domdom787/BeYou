@@ -1,5 +1,7 @@
 <?php
 
+
+// ------------ UPLOAD STAFF functions -----------------------------------------------------
   // Function for when a admin user uploads a staff file
   function uploadstaffdetails($data){
     include("inc/dbconn.inc.php");
@@ -85,7 +87,7 @@
   } // End uploadstaffdetails function
 
 
-// ------------------------------------------------------- 
+// --------- Upload staff detail | Helper or additional functions ------------
 
   // Cost Center function: Check if it exists and if NOT then ADD
   function add_costcenter ($id, $name) {
@@ -477,6 +479,7 @@
 
   }
 
+  // ----------------- Functions for the Maintain users menu option -----------------------------
   // Function to get Staff details given the entity 
   function getUserDetails($entity) {
     include("inc/dbconn.inc.php");
@@ -590,6 +593,31 @@
     $result = mysqli_query($conn, $sql);    
 
     mysqli_close($conn); 
+
+    return $result;
+
+  }
+
+  // --------- GENERAL user related functions -----------------------------------
+  // get user's name given entity
+  function getUsersName($entity) {
+    include("inc/dbconn.inc.php");
+    $sql = "SELECT KnownAsName, Surname FROM bu_user WHERE Entity = " . $entity . ";";
+    $result = mysqli_query($conn, $sql); 
+    mysqli_close($conn); 
+    $row = mysqli_fetch_assoc($result);
+    $name = $row["KnownAsName"] . ' ' . $row["Surname"];
+
+    return $name;
+  }
+
+  // get user's direct reports given a line manager entity
+  function getUserTeam($entity) {
+    include("inc/dbconn.inc.php");
+    $sql = "SELECT Entity FROM bu_staffattributes WHERE LineManagerEntity = " . $entity . ";";
+    $result = mysqli_query($conn, $sql); 
+    mysqli_close($conn); 
+    
 
     return $result;
 
