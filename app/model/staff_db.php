@@ -377,6 +377,7 @@
                     JobCode,
                     JobLevelId,
                     EmployeeClass,
+                    EmployeeStatus,
                     LineManagerEntity,
                     BusinessUnitCode,
                     DivisionCode,
@@ -389,6 +390,7 @@
                     '" . $record['JobCode'] . "',
                       " . $jobLevelID . ",
                     '" . $record['EmpClass'] . "',
+                    '" . $record['EmpStatus'] . "',
                     '" . $record['LineManager'] . "',
                     '" . $record['BusUnitCode'] . "',
                     '" . $record['DivisionCode']  . "',
@@ -400,6 +402,7 @@
     mysqli_query($conn, $sql);
     mysqli_close($conn);
   }
+  
 
   // Function to add or update a users attributes
   function update_staff_attributes($record) {
@@ -421,6 +424,7 @@
       $NeedUpdate += abs(strcmp($record['JobCode'],$row['JobCode']));
       $NeedUpdate += (getJobLevelID($record['JobLevel']) == intval($row['JobLevelId'])) ? 0 : 1;
       $NeedUpdate += abs(strcmp($record['EmpClass'],$row['EmployeeClass']));
+      $NeedUpdate += abs(strcmp($record['EmpStatus'],$row['EmployeeStatus']));
       $NeedUpdate += abs(strcmp($record['LineManager'],$row['LineManagerEntity']));
       $NeedUpdate += abs(strcmp($record['BusUnitCode'],$row['BusinessUnitCode']));
       $NeedUpdate += abs(strcmp($record['DivisionCode'],$row['DivisionCode']));
@@ -453,6 +457,7 @@
                      JobCode,
                      JobLevelId,
                      EmployeeClass,
+                     EmployeeStatus,
                      LineManagerEntity,
                      BusinessUnitCode,
                      DivisionCode,
@@ -465,6 +470,7 @@
                       '" . $record['JobCode'] . "',
                        " . $jobLevelID . ",
                       '" . $record['EmpClass'] . "',
+                      '" . $record['EmpStatus'] . "',
                       '" . $record['LineManager'] . "',
                       '" . $record['BusUnitCode'] . "',
                       '" . $record['DivisionCode']  . "',
@@ -611,16 +617,6 @@
     return $name;
   }
 
-  // get user's direct reports given a line manager entity
-  function getUserTeam($entity) {
-    include("inc/dbconn.inc.php");
-    $sql = "SELECT Entity FROM bu_staffattributes WHERE LineManagerEntity = " . $entity . ";";
-    $result = mysqli_query($conn, $sql); 
-    mysqli_close($conn); 
-    
-
-    return $result;
-
-  }
+  
 
 ?>
